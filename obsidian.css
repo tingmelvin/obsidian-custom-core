@@ -1,0 +1,410 @@
+/*
+Apps > Obsidian.md > Theme/Snippet 
+───────────────────────────────────────────────────
+
+Custom Core v0.1.0
+adapted from Obsidian.md's core theme
+by @tingmelvin
+
+https://github.com/tingmelvin/obsidian-custom-core
+
+MIT License
+
+───────────────────────────────────────────────────
+
+NOTE: This is meant to be used with Style Settings.
+Style Settings can be downloaded from the Community Plugins store.
+
+───────────────────────────────────────────────────
+*/
+
+.root {
+    --padding-markdown-embed: 4px;
+    --margin-markdown-embed: 28px;
+    
+    --clr-ft-h1: var(--text-normal);
+    --clr-ft-h2: var(--text-normal);
+    --clr-ft-h3: var(--text-normal);
+    --clr-ft-h4: var(--text-normal);
+    --clr-ft-h5: var(--text-normal);
+    --clr-ft-h6: var(--text-normal);
+
+    --clr-bg-h1: var(--background-primary);
+    --clr-bg-h2: var(--background-primary);
+    --clr-bg-h3: var(--background-primary);
+    --clr-bg-h4: var(--background-primary);
+    --clr-bg-h5: var(--background-primary);
+    --clr-bg-h6: var(--background-primary);
+
+}
+
+
+/* ──────────────────────────────────────────────────
+(TYPOGRAPHY) Heading Colours, both Font and Background
+────────────────────────────────────────────────── */
+/* Change header font colours for reading mode */
+.markdown-preview-view h1 {
+    color: var(--clr-ft-h1);
+}
+.markdown-preview-view h2 {
+    color: var(--clr-ft-h2);
+}
+.markdown-preview-view h3 {
+    color: var(--clr-ft-h3);
+}
+.markdown-preview-view h4 {
+    color: var(--clr-ft-h4);
+}
+.markdown-preview-view h5 {
+    color: var(--clr-ft-h5);
+}
+.markdown-preview-view h6 {
+    color: var(--clr-ft-h6);
+}
+/* Change header font colours for editing mode (source view/live preview) */
+/*.cm-header-1 {
+    color: var(--clr-bg-h1);
+}
+.cm-header-2 {
+    color: var(--clr-bg-h2);
+}
+.cm-header-3 {
+    color: var(--clr-bg-h3);
+}
+.cm-header-4 {
+    color: var(--clr-bg-h4);
+}
+.cm-header-5 {
+    color: var(--clr-bg-h5);
+}
+.cm-header-6 {
+    color: var(--clr-bg-h6);
+}*/
+
+/* ───────────────────────────────────────────────────
+(EMBED BLOCKS) Change Markdown Embed Blocks
+───────────────────────────────────────────────────*/
+
+/* (Reading mode) Remove border */
+.embed-no-borders .markdown-embed, .file-embed {
+    border-top: 0;
+    border-bottom: 0;
+}
+/* (Live Preview) Remove border */
+.embed-lp-no-border .markdown-source-view .markdown-embed, .markdown-source-view .file-embed {
+    border: 0;
+}
+/* (Live Preview) Remove paddings */
+.embed-lp-no-padding .markdown-source-view .markdown-embed, .markdown-source-view .file-embed {
+    padding: 0;
+}
+/* */
+.markdown-embed, .file-embed {
+    padding: var(--padding-markdown-embed) 0;
+    margin: var(--margin-markdown-embed) 0;
+}
+
+/* ───────────────────────────────────────────────────
+(LINK ADJUSTMENT) Change hyperlink underlines lower to be more readable
+───────────────────────────────────────────────────*/
+
+.link-lower .external-link {
+    text-decoration: none;
+    border-bottom-width: 1.25px;
+    border-bottom-style: solid;
+}
+/* Change underlines for hyperlink to be lower, for Reading mode */
+.link-lower .markdown-preview-view .internal-link {
+    text-decoration: none;
+    border-bottom-width: 1.25px;
+    border-bottom-style: solid;
+}
+
+/* Change underlines for hyperlink to be lower, for Editing mode */
+.link-lower .markdown-source-view.mod-cm6 .cm-underline {
+    text-decoration: none;
+    border-bottom-width: 1.25px;
+    border-bottom-style: solid;
+}
+
+
+
+/* ───────────────────────────────────────────────────
+(PLUGIN | Style Settings) Show Block Description Change
+─────────────────────────────────────────────────── */
+
+.style-settings-heading:not(.is-collapsed) .setting-item-description {
+    display: block !important;
+}
+
+/* @settings
+name: Custom Core
+id: custom-core
+settings:
+    -
+     id: typography
+     title: Typography
+     description: Fonts and Headings
+     type: heading
+     level: 1
+     collapsed: true
+    -
+        id: fonts
+        title: -> Fonts
+        title.zh: 字体设计
+        title.zh-TW: 字體設計
+        description: Font setting options
+        type: heading
+        level: 2
+        collapsed: true
+    -
+            id: default-font
+            title: Font — Default
+            description: Changes the default font in Obsidian.
+            type: variable-text
+            default: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif'
+    -
+            id: font-monospace
+            title: Font — Monospace
+            description: Changes the monospace font (used for codeblocks) in Obsidian.
+            type: variable-text
+            default: '"Source Code Pro", monospace'
+    -
+            id: mermaid-font
+            title: Font — Mermaid.js
+            description: Changes font for Mermaid.js in Obsidian.
+            type: variable-text
+            default: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif'
+
+    -
+        id: headings
+        title: -> Headings/Headers
+        description: Heading/Headers setting options
+        type: heading
+        level: 2
+        collapsed: true
+    -
+            id: heading-ft-clr
+            title: --> Heading Font Colours
+            description: Settings to change font colours
+            type: heading
+            level: 3
+            collapsed: true
+    -
+                id: clr-ft-h1
+                title: Font Colour — H1
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h1-rgb
+                    format: rgb
+                default-dark: '#dcddde'
+                default-light: '#2e3338'
+    -
+                id: clr-ft-h2
+                title: Font Colour — H2
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h2-rgb
+                    format: rgb
+                default-dark: '#dcddde'
+                default-light: '#2e3338'
+    -
+                id: clr-ft-h3
+                title: Font Colour — H3
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h3-rgb
+                    format: rgb
+                default-dark: '#dcddde'
+                default-light: '#2e3338'
+    -
+                id: clr-ft-h4
+                title: Font Colour — H4
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h4-rgb
+                    format: rgb
+                default-dark: '#dcddde'
+                default-light: '#2e3338'
+    -
+                id: clr-ft-h5
+                title: Font Colour — H5
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h5-rgb
+                    format: rgb
+                default-dark: '#dcddde'
+                default-light: '#2e3338'
+    -
+                id: clr-ft-h6
+                title: Font Colour — H6
+                type: variable-themed-color
+                opacity: false
+                format: hex
+                alt-format:
+                -
+                    id: clr-ft-h6-rgb
+                    format: rgb
+                default-dark: '#999'
+                default-light: '#888888'
+    -
+            id: heading-bg-clr
+            title: --> Heading Background Colours
+            description: Settings to change background colours. NOTE!!! You are strongly advised to consult http://____ on advice on how to create a background with the appropriate transparency.
+            type: heading
+            level: 3
+            collapsed: true
+    -
+                id: clr-bg-h1
+                title: Background Colour — H1
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h1-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+                id: clr-bg-h2
+                title: Background Colour — H2
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h2-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+                id: clr-bg-h3
+                title: Background Colour — H3
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h3-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+                id: clr-bg-h4
+                title: Background Colour — H4
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h4-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+                id: clr-bg-h5
+                title: Background Colour — H5
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h5-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+                id: clr-bg-h6
+                title: Background Colour — H6
+                type: variable-themed-color
+                opacity: true
+                format: hex
+                alt-format:
+                -
+                    id: clr-bg-h6-rgb
+                    format: rgb
+                default-dark: '#202020'
+                default-light: '#ffffff'
+    -
+     id: aesthetics
+     title: Aesthetics
+     description:
+     type: heading
+     level: 1
+     collapsed: true
+    -
+        id: link-lower
+        title: Shift hyperlinks lower
+        description: If enabled, this will shift both internal and external hyperlinks lower for readability and aesthetic purposes.
+        type: class-toggle
+        default: false
+    -
+        id: markdown-embed-blocks
+        title: -> Markdown Embed Blocks 
+        description: Settings for the embed blocks
+        type: heading
+        level: 2
+        collapsed: true
+    -
+            id: markdown-embed-blocks-mode-r
+            title: --> Reading Mode
+            description: 
+            type: heading
+            level: 3
+            collapsed: true
+    -
+                id: embed-no-borders
+                title: (Reading mode) Remove borders
+                description: Remove top/bottom borders for embed blocks in Reading mode.
+                type: class-toggle
+                default: false
+    -
+                id: margin-markdown-embed
+                title: (Reading mode) Change margin for embed blocks
+                description: Change the size of the margin (top/down) for embed blocks in Reading mode.
+                type: variable-number-slider
+                format: px
+                default: 28
+                min: 0
+                max: 40
+                step: 1
+    -
+            id: markdown-embed-blocks-mode-lp
+            title: --> Live Preview
+            description: 
+            type: heading
+            level: 3
+            collapsed: true
+    -
+                id: embed-lp-no-border
+                title: (Live Preview) Remove borders
+                description: Remove borders for embed blocks in Live Preview.
+                type: class-toggle
+                default: false
+    -
+                id: embed-lp-no-padding
+                title: (Live Preview) Remove padding
+                description: Remove padding for embed blocks in Live Preview
+                type: class-toggle
+                default: false
+
+
+
+
+*/
